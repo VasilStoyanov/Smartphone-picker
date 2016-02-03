@@ -8,5 +8,6 @@ allowing users to use the application as a "comparer" between different smartpho
 The application provides the following functionality:
 * Easy to use navigation between pages.
 * Lists different items with details.
-* Shows ratings for each item.
-* Validates ...
+* Quick search for finding a phone.
+* Poll-like information gatherer.
+* Back-end services
