@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868B9B1C615C470008E4DE /* HomeViewController.m */; };
 		03D209631C5EB05A00FBB254 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209621C5EB05A00FBB254 /* main.m */; };
 		03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209651C5EB05A00FBB254 /* AppDelegate.m */; };
 		03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096A1C5EB05A00FBB254 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03868B9A1C615C470008E4DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		03868B9B1C615C470008E4DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smartphone picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D209621C5EB05A00FBB254 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03D209641C5EB05A00FBB254 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +42,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03868B921C60210F0008E4DE /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		03D209551C5EB05A00FBB254 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		03D209601C5EB05A00FBB254 /* Smartphone picker */ = {
 			isa = PBXGroup;
 			children = (
+				03868B921C60210F0008E4DE /* CustomViews */,
 				03D209641C5EB05A00FBB254 /* AppDelegate.h */,
 				03D209651C5EB05A00FBB254 /* AppDelegate.m */,
 				03F979821C5F88D400AF925A /* ViewModels */,
@@ -83,6 +94,8 @@
 			children = (
 				03F979831C5F895600AF925A /* AllPhonesViewController.h */,
 				03F979841C5F895600AF925A /* AllPhonesViewController.m */,
+				03868B9A1C615C470008E4DE /* HomeViewController.h */,
+				03868B9B1C615C470008E4DE /* HomeViewController.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
 				03F979851C5F895600AF925A /* AllPhonesViewController.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
+				03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
