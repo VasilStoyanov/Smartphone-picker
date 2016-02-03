@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController <UITableViewDataSource, UISearchBarDelegate>
+@interface HomeViewController : UIViewController <UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 

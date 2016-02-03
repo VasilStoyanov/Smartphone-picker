@@ -1,5 +1,7 @@
 //  Copyright © 2016 Vasil Stoyanov. All rights reserved.
 #import "HomeViewController.h"
+#import "PhoneTableViewCell.h"
+#import "Phone.h"
 
 @interface HomeViewController ()
 
@@ -11,10 +13,15 @@ NSMutableArray *result;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self applyNavStyles];
-    names = [NSMutableArray arrayWithObjects:@"Pesho", @"Gosho", @"Penka Lalova", @"Kolio", nil];
     [self.homeTableView setDataSource:self];
+    [self.homeTableView setDelegate:self];
+    
     [self.homeSearchBar setDelegate:self];
+    
+    [self applyNavStyles];
+    
+    names = [NSMutableArray arrayWithObjects:@"Pesho", @"Gosho", @"Penka Lalova", @"Pesho", @"Kolio", @"Pesho", @"Plaka", nil];
+
     result = [[NSMutableArray alloc] init];
     
 }
@@ -24,13 +31,29 @@ NSMutableArray *result;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"SmartphoneCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSString *cellIdentifier = @"PhoneCell";
+    PhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"PhoneCell" owner:self options:nil] objectAtIndex:0];
+    }
+    Phone *phone = [[Phone alloc]init];
+    phone.model = @"One M8";
+    phone.manufacturer = @"HTC";
+    phone.price = 456;
+    
+    
+    //UIImage *defaultImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:phone.image]]];
+    
+    UIImage *defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
+    if(!defaultImage) {
+        defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
     }
     
-    cell.textLabel.text = result[indexPath.row];
+    cell.deviceFullName.text = [NSString stringWithFormat:@"%@ %@", phone.manufacturer, phone.model];
+    cell.devicePrice.text = [NSString stringWithFormat:@"%g", phone.price];
+    cell.deviceImage.image = defaultImage;
+    
+    [self.homeTableView autoresizesSubviews];
     return cell;
 }
 
@@ -38,12 +61,17 @@ NSMutableArray *result;
     return result.count;
 }
 
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 200;
+}
+
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     result = [[NSMutableArray alloc]init];
     for (NSString *name in names) {
         if([name containsString:searchText]) {
             if(![result containsObject:name]) {
-            [result addObject:name];
+                [result addObject:name];
             }
         }
     }

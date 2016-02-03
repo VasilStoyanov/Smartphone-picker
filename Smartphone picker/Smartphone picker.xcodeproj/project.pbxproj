@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868B9B1C615C470008E4DE /* HomeViewController.m */; };
+		03868BA01C6296340008E4DE /* PhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03868B9F1C6296340008E4DE /* PhoneCell.xib */; };
+		03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */; };
+		03868BA61C629D500008E4DE /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868BA51C629D500008E4DE /* Phone.m */; };
 		03D209631C5EB05A00FBB254 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209621C5EB05A00FBB254 /* main.m */; };
 		03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209651C5EB05A00FBB254 /* AppDelegate.m */; };
 		03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096A1C5EB05A00FBB254 /* Main.storyboard */; };
@@ -19,6 +22,11 @@
 /* Begin PBXFileReference section */
 		03868B9A1C615C470008E4DE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		03868B9B1C615C470008E4DE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		03868B9F1C6296340008E4DE /* PhoneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneCell.xib; sourceTree = "<group>"; };
+		03868BA11C6298E30008E4DE /* PhoneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneTableViewCell.h; sourceTree = "<group>"; };
+		03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneTableViewCell.m; sourceTree = "<group>"; };
+		03868BA41C629D500008E4DE /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
+		03868BA51C629D500008E4DE /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
 		03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smartphone picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D209621C5EB05A00FBB254 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03D209641C5EB05A00FBB254 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +53,9 @@
 		03868B921C60210F0008E4DE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				03868B9F1C6296340008E4DE /* PhoneCell.xib */,
+				03868BA11C6298E30008E4DE /* PhoneTableViewCell.h */,
+				03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -96,6 +107,8 @@
 				03F979841C5F895600AF925A /* AllPhonesViewController.m */,
 				03868B9A1C615C470008E4DE /* HomeViewController.h */,
 				03868B9B1C615C470008E4DE /* HomeViewController.m */,
+				03868BA41C629D500008E4DE /* Phone.h */,
+				03868BA51C629D500008E4DE /* Phone.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				03D209711C5EB05A00FBB254 /* LaunchScreen.storyboard in Resources */,
 				03D2096E1C5EB05A00FBB254 /* Assets.xcassets in Resources */,
 				03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */,
+				03868BA01C6296340008E4DE /* PhoneCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03868BA61C629D500008E4DE /* Phone.m in Sources */,
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
 				03F979851C5F895600AF925A /* AllPhonesViewController.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
+				03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */,
 				03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
