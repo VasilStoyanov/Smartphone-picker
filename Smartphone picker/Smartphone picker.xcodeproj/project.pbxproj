@@ -16,7 +16,6 @@
 		03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096A1C5EB05A00FBB254 /* Main.storyboard */; };
 		03D2096E1C5EB05A00FBB254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096D1C5EB05A00FBB254 /* Assets.xcassets */; };
 		03D209711C5EB05A00FBB254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096F1C5EB05A00FBB254 /* LaunchScreen.storyboard */; };
-		03F979851C5F895600AF925A /* AllPhonesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F979841C5F895600AF925A /* AllPhonesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +34,6 @@
 		03D2096D1C5EB05A00FBB254 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03D209701C5EB05A00FBB254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D209721C5EB05A00FBB254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03F979831C5F895600AF925A /* AllPhonesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPhonesViewController.h; sourceTree = "<group>"; };
-		03F979841C5F895600AF925A /* AllPhonesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPhonesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +50,8 @@
 		03868B921C60210F0008E4DE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				03868BA41C629D500008E4DE /* Phone.h */,
+				03868BA51C629D500008E4DE /* Phone.m */,
 				03868B9F1C6296340008E4DE /* PhoneCell.xib */,
 				03868BA11C6298E30008E4DE /* PhoneTableViewCell.h */,
 				03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */,
@@ -103,12 +102,8 @@
 		03F979821C5F88D400AF925A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				03F979831C5F895600AF925A /* AllPhonesViewController.h */,
-				03F979841C5F895600AF925A /* AllPhonesViewController.m */,
 				03868B9A1C615C470008E4DE /* HomeViewController.h */,
 				03868B9B1C615C470008E4DE /* HomeViewController.m */,
-				03868BA41C629D500008E4DE /* Phone.h */,
-				03868BA51C629D500008E4DE /* Phone.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -186,7 +181,6 @@
 			files = (
 				03868BA61C629D500008E4DE /* Phone.m in Sources */,
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
-				03F979851C5F895600AF925A /* AllPhonesViewController.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
 				03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */,
 				03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */,

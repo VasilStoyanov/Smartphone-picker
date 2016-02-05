@@ -24,6 +24,22 @@ NSMutableArray *result;
 
     result = [[NSMutableArray alloc] init];
     
+    UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Phone for me"
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:nil];
+    
+    UIBarButtonItem *add = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"All phones"
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:nil];
+    
+    NSArray *pesho = [NSArray arrayWithObjects:flipButton, nil];
+    self.navigationItem.rightBarButtonItem = flipButton;
+    self.navigationItem.leftBarButtonItem = add;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,8 +68,8 @@ NSMutableArray *result;
     cell.deviceFullName.text = [NSString stringWithFormat:@"%@ %@", phone.manufacturer, phone.model];
     cell.devicePrice.text = [NSString stringWithFormat:@"%g", phone.price];
     cell.deviceImage.image = defaultImage;
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     
-    [self.homeTableView autoresizesSubviews];
     return cell;
 }
 
@@ -76,21 +92,36 @@ NSMutableArray *result;
         }
     }
     
-    self.foundItemsLabel.text = [NSString stringWithFormat:@"Found %ld item(s)!", result.count];
-    
+    if(result.count > 0) {
+        self.foundItemsLabel.text = [NSString stringWithFormat:@"Found %ld item(s)!", result.count];
+    }
+    else {
+        self.foundItemsLabel.text = @"";
+    }
+
     [self.homeTableView reloadData];
 }
 
 -(void)applyNavStyles {
-    self.title = @"Home";
-    
-    float red = 0.00/255.00;
-    float green = 127.00/255.00;
-    float blue = 255.00/255.00;
-    
-    UIColor *mainColor = [UIColor colorWithRed: red green: green blue: blue alpha:1];
-    [self.navigationController.navigationBar setBarTintColor: mainColor];
+    self.title = @"Quick find";
+    UIColor *navStyle = [self getUIColorFromRGB:0 green:127 blue:255 alpha:1];
+    [self.navigationController.navigationBar setBarTintColor: navStyle];
     [self.navigationController.navigationBar setTranslucent:YES];
+}
+
+-(UIColor *)getUIColorFromRGB: (float)red
+                      green: (float)green
+                       blue: (float)blue
+                      alpha: (int)alpha {
+    
+    float redInRightFormat = red/255.00;
+    float greenInRightFormat = green/255.00;
+    float blueInRightFormat = blue/255.00;
+    
+    UIColor *mainColor = [UIColor colorWithRed: redInRightFormat green: greenInRightFormat blue: blueInRightFormat alpha:alpha];
+    
+    return mainColor;
+    
 }
 /*
 #pragma mark - Navigation

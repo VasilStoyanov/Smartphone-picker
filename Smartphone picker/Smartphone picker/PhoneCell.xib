@@ -51,6 +51,7 @@
                     <constraint firstItem="4uJ-4e-yGu" firstAttribute="leading" secondItem="Qvs-qL-f5C" secondAttribute="trailing" constant="8" symbolic="YES" id="uEU-rW-7kz"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="deviceFullName" destination="4uJ-4e-yGu" id="vkj-pu-AFb"/>
                 <outlet property="deviceImage" destination="Qvs-qL-f5C" id="esc-JT-fow"/>
