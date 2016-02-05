@@ -11,6 +11,7 @@
 		03868BA01C6296340008E4DE /* PhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03868B9F1C6296340008E4DE /* PhoneCell.xib */; };
 		03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */; };
 		03868BA61C629D500008E4DE /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 03868BA51C629D500008E4DE /* Phone.m */; };
+		03A2FF501C6558F400B14039 /* AllPhonesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A2FF4F1C6558F400B14039 /* AllPhonesViewController.m */; };
 		03D209631C5EB05A00FBB254 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209621C5EB05A00FBB254 /* main.m */; };
 		03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03D209651C5EB05A00FBB254 /* AppDelegate.m */; };
 		03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096A1C5EB05A00FBB254 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		03868BA21C6298E30008E4DE /* PhoneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneTableViewCell.m; sourceTree = "<group>"; };
 		03868BA41C629D500008E4DE /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
 		03868BA51C629D500008E4DE /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
+		03A2FF4E1C6558F400B14039 /* AllPhonesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllPhonesViewController.h; sourceTree = "<group>"; };
+		03A2FF4F1C6558F400B14039 /* AllPhonesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPhonesViewController.m; sourceTree = "<group>"; };
 		03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smartphone picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D209621C5EB05A00FBB254 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03D209641C5EB05A00FBB254 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 			children = (
 				03868B9A1C615C470008E4DE /* HomeViewController.h */,
 				03868B9B1C615C470008E4DE /* HomeViewController.m */,
+				03A2FF4E1C6558F400B14039 /* AllPhonesViewController.h */,
+				03A2FF4F1C6558F400B14039 /* AllPhonesViewController.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03868BA61C629D500008E4DE /* Phone.m in Sources */,
+				03A2FF501C6558F400B14039 /* AllPhonesViewController.m in Sources */,
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
 				03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */,

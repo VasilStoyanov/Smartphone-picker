@@ -16,4 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *foundItemsLabel;
 
+@property (weak, nonatomic) IBOutlet UITabBarItem *searchTab;
+
 @end
