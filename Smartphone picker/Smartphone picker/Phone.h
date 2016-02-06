@@ -18,4 +18,12 @@
 
 @property (nonatomic, strong) NSString *image;
 
+@property (nonatomic, strong) NSString *OS;
+
+-(instancetype) initWithModel: (NSString *) model
+                  manufacturer: (NSString *) manufacturer
+                         price: (double) price
+                         image: (NSString *) image
+                         andOS: (NSString *) OS;
+
 @end
