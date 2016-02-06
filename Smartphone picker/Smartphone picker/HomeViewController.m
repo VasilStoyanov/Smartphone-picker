@@ -7,9 +7,10 @@
 
 @end
 
-@implementation HomeViewController
-NSMutableArray *names;
-NSMutableArray *result;
+@implementation HomeViewController {
+    NSMutableArray *names;
+    NSMutableArray *result;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

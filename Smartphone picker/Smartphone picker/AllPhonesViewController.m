@@ -9,6 +9,7 @@
 #import "AllPhonesViewController.h"
 #import "Phone.h"
 #import "PhoneTableViewCell.h"
+#import "AddNewPhoneViewController.h"
 
 @interface AllPhonesViewController ()
 
@@ -84,11 +85,18 @@
     UIColor *navStyle = [self getUIColorFromRGB:0 green:127 blue:255 alpha:1];
     [self.navigationController.navigationBar setBarTintColor: navStyle];
     [self.navigationController.navigationBar setTranslucent:YES];
-    UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+
+    UIBarButtonItem *add = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewPhone)];
     
     self.navigationItem.rightBarButtonItem = add;
 }
 
+-(void)addNewPhone {
+    NSString *boardId = @"addPhoneScene";
+    AddNewPhoneViewController *addPhoneVC = [self.storyboard instantiateViewControllerWithIdentifier:boardId];
+    [self.navigationController pushViewController:addPhoneVC animated:YES];
+    
+}
 /*
 #pragma mark - Navigation
 
