@@ -12,7 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *deviceImage;
 
-@property (weak, nonatomic) IBOutlet UILabel *deviceFullName;
+@property (weak, nonatomic) IBOutlet UILabel *deviceManufacturer;
+
+@property (weak, nonatomic) IBOutlet UILabel *deviceModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *devicePrice;
 

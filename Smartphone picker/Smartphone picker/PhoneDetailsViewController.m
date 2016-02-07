@@ -16,6 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.deviceFullName setText:self.fullName];
+    [self.devicePrice setText:self.priceofDevice];
+    self.deviceImageSrc.image = [UIImage imageNamed:self.imageSrc];
+    self.deviceOperatingSystemImage.image = [UIImage imageNamed:self.OS];
+    
 }
 
 - (void)didReceiveMemoryWarning {

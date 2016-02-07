@@ -21,6 +21,8 @@
 		03D2096C1C5EB05A00FBB254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096A1C5EB05A00FBB254 /* Main.storyboard */; };
 		03D2096E1C5EB05A00FBB254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096D1C5EB05A00FBB254 /* Assets.xcassets */; };
 		03D209711C5EB05A00FBB254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096F1C5EB05A00FBB254 /* LaunchScreen.storyboard */; };
+		03F87E5B1C66942E009DB6D5 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F87E5A1C66942E009DB6D5 /* UIView+Toast.m */; };
+		03F87E621C66B5CB009DB6D5 /* PhonesBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F87E611C66B5CB009DB6D5 /* PhonesBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		03D2096D1C5EB05A00FBB254 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03D209701C5EB05A00FBB254 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D209721C5EB05A00FBB254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03F87E591C66942E009DB6D5 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "../../UIView+Toast.h"; sourceTree = "<group>"; };
+		03F87E5A1C66942E009DB6D5 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "../../UIView+Toast.m"; sourceTree = "<group>"; };
+		03F87E601C66B5CB009DB6D5 /* PhonesBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesBase.h; sourceTree = "<group>"; };
+		03F87E611C66B5CB009DB6D5 /* PhonesBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonesBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,8 @@
 		03D209601C5EB05A00FBB254 /* Smartphone picker */ = {
 			isa = PBXGroup;
 			children = (
+				03F87E5C1C66B554009DB6D5 /* Data */,
+				03F87E581C66940A009DB6D5 /* NotificationLib */,
 				03A2FF511C656FB100B14039 /* Models */,
 				03868B921C60210F0008E4DE /* CustomViews */,
 				03F979821C5F88D400AF925A /* ViewModels */,
@@ -120,6 +128,24 @@
 				03D209621C5EB05A00FBB254 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03F87E581C66940A009DB6D5 /* NotificationLib */ = {
+			isa = PBXGroup;
+			children = (
+				03F87E591C66942E009DB6D5 /* UIView+Toast.h */,
+				03F87E5A1C66942E009DB6D5 /* UIView+Toast.m */,
+			);
+			name = NotificationLib;
+			sourceTree = "<group>";
+		};
+		03F87E5C1C66B554009DB6D5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				03F87E601C66B5CB009DB6D5 /* PhonesBase.h */,
+				03F87E611C66B5CB009DB6D5 /* PhonesBase.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		03F979821C5F88D400AF925A /* ViewModels */ = {
@@ -217,11 +243,13 @@
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
 				0393DB511C662CF80028A8C8 /* MatchPhoneViewController.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
+				03F87E5B1C66942E009DB6D5 /* UIView+Toast.m in Sources */,
 				03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */,
 				03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */,
 				0393DB541C663FEE0028A8C8 /* AndroidManufacturerersViewController.m in Sources */,
 				0393DB5F1C6672440028A8C8 /* PhoneDetailsViewController.m in Sources */,
 				03A2FF541C65715B00B14039 /* AddNewPhoneViewController.m in Sources */,
+				03F87E621C66B5CB009DB6D5 /* PhonesBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

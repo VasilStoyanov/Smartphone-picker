@@ -7,12 +7,17 @@
 //
 
 #import "AddNewPhoneViewController.h"
+#import "PhonesBase.h"
+#import "Phone.h"
 
 @interface AddNewPhoneViewController ()
 
 @end
 
-@implementation AddNewPhoneViewController
+@implementation AddNewPhoneViewController{
+    PhonesBase *base;
+    Phone *newPhone;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +33,7 @@
     
     [self.descriptionTV.layer setBorderColor:[self getUIColorFromRGB:237 green:241 blue:228 alpha:1].CGColor];
     [self.descriptionTV.layer setBorderWidth:2.0f];
+    base = [[PhonesBase alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,15 +41,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)addNewPhone:(id)sender {
+    newPhone = [[Phone alloc] initWithModel:@"Pesho" manufacturer:@"PESHO OOD" price:123 image:@"Default" andOS:@"Android"];
+    [base.phoneBase addObject:newPhone];
 }
-*/
 
 -(UIColor *)getUIColorFromRGB: (float)red
                         green: (float)green

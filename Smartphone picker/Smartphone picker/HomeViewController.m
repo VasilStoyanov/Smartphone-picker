@@ -2,20 +2,18 @@
 #import "HomeViewController.h"
 #import "PhoneTableViewCell.h"
 #import "Phone.h"
+#import "UIView+Toast.h"
+#import "PhoneDetailsViewController.h"
+#import "PhonesBase.h"
 
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController {
-    NSMutableArray *phones;
+    PhonesBase *phones;
     NSMutableArray *result;
-    Phone *p1;
-    Phone *p2;
-    Phone *p3;
-    Phone *p4;
-    Phone *p5;
-    Phone *p6;
+    Phone *selectedPhone;
     
 }
 
@@ -26,23 +24,25 @@
     
     [self.homeSearchBar setDelegate:self];
     
+    [self.view makeToast:@"Smartphone added! You owe only a smile! :)"
+                duration:3.0
+                position:CSToastPositionCenter
+                   title:@"Success!"
+                   image:[UIImage imageNamed:@"everythingAllright.png"]
+                   style:nil
+              completion:^(BOOL didTap) {
+                  if (didTap) {
+                      NSLog(@"completion from tap");
+                  } else {
+                      NSLog(@"completion without tap");
+                  }
+              }];
+
+    
     [self applyNavStyles];
     self.title = @"Quick find";
     
-    p1 = [[Phone alloc]initWithModel:@"One M8" manufacturer:@"HTC" price:1200 image:@"DefaultPhoneImage" andOS:@"Android"];
-    
-    p2 = [[Phone alloc]initWithModel:@"Galaxy S6" manufacturer:@"Samsung" price:1220 image:@"DefaultPhoneImage" andOS:@"Android"];
-    
-    p3 = [[Phone alloc]initWithModel:@"Galaxy S6 Edge" manufacturer:@"Samsung" price:1400 image:@"DefaultPhoneImage" andOS:@"Android"];
-    
-    p4 = [[Phone alloc]initWithModel:@"Nexus 5" manufacturer:@"Google" price:1000 image:@"DefaultPhoneImage" andOS:@"Android"];
-    
-    p5 = [[Phone alloc]initWithModel:@"G4" manufacturer:@"LG" price:1500 image:@"DefaultPhoneImage" andOS:@"Android"];
-    
-    p6 = [[Phone alloc]initWithModel:@"iPhone 5s" manufacturer:@"Apple" price:2200 image:@"DefaultPhoneImage" andOS:@"iOS"];
-    
-    phones = [NSMutableArray arrayWithObjects:p1, p2, p3, p4, p5, p6, nil];
-
+    phones = [[PhonesBase alloc]init];
     result = [[NSMutableArray alloc] init];
     
 }
@@ -58,20 +58,15 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PhoneCell" owner:self options:nil] objectAtIndex:0];
     }
     
-    //UIImage *defaultImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:phone.image]]];
-    
-//    NSString *currentPhoneImage = [phones[indexPath.row] image];
-    UIImage *defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
+    NSString *currentDeviceImage = (NSString *)[result[indexPath.row] image];
+    UIImage *defaultImage = [UIImage imageNamed:currentDeviceImage];
     
     if(!defaultImage) {
-        defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
+        defaultImage = [UIImage imageNamed:currentDeviceImage];
     }
     
-    NSString *deviceFullName = [NSString stringWithFormat:@"%@ %@",
-                                [result[indexPath.row] model],
-                                [result[indexPath.row] manufacturer]];
-    
-    cell.deviceFullName.text = deviceFullName;
+    cell.deviceManufacturer.text = [result[indexPath.row] manufacturer];
+    cell.deviceModel.text = [result[indexPath.row] model];
     cell.devicePrice.text = [NSString stringWithFormat:@"%g $", [result[indexPath.row]price]];
     cell.deviceImage.image = defaultImage;
     cell.contentView.backgroundColor = [UIColor whiteColor];
@@ -86,13 +81,38 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedPhone = result[indexPath.row];
+    selectedCell.contentView.backgroundColor = [self getUIColorFromRGB:175 green:238 blue:238 alpha:1];
     [self performSegueWithIdentifier:@"ViewPhoneDetailsSegue" sender:self];
 }
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue
                 sender:(id)sender {
-//    NSString *toAndroidManufacturersSegueIdentifier = @"ViewPhoneDetailsSegue";
+    NSString *toViewPhoneDetailsSegue = @"ViewPhoneDetailsSegue";
+    if([segue.identifier isEqualToString:toViewPhoneDetailsSegue]) {
+        PhoneDetailsViewController *toVC = segue.destinationViewController;
+        NSString *deviceFullName = [NSString stringWithFormat:@"%@ %@",
+                                    selectedPhone.manufacturer,
+                                    selectedPhone.model];
+        
+        toVC.fullName = deviceFullName;
+        toVC.priceofDevice = [NSString stringWithFormat:@"%g $", selectedPhone.price];
+        toVC.imageSrc = selectedPhone.image;
+        toVC.devicePrice.text = [NSString stringWithFormat:@"%g", selectedPhone.price];
+        if([selectedPhone.OS isEqualToString:@"iOS"]) {
+            toVC.OS = @"iosLogo";
+        }
+        else if([selectedPhone.OS isEqualToString:@"Android"]) {
+            toVC.OS = @"androidLogo";
+        }
+        else {
+            toVC.OS = @"windowsLogo";
+        }
+        
+        
+    }
 }
 
 
@@ -104,7 +124,7 @@
     result = [[NSMutableArray alloc]init];
     
     NSString *searchTextToLower = [searchText lowercaseString];
-    for (Phone *phone in phones) {
+    for (Phone *phone in phones.phoneBase) {
         NSString *phoneModelToLower = [phone.model lowercaseString];
         if([phoneModelToLower containsString:searchTextToLower]) {
             if(![result containsObject:phone]) {
@@ -144,14 +164,5 @@
     return mainColor;
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

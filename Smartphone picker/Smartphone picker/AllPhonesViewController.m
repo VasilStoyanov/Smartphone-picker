@@ -57,7 +57,8 @@
         defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
     }
     
-    cell.deviceFullName.text = [NSString stringWithFormat:@"%@ %@", phone.manufacturer, phone.model];
+    cell.deviceManufacturer.text = [NSString stringWithFormat:@"%@", phone.manufacturer];
+    cell.deviceManufacturer.text = [NSString stringWithFormat:@"%@", phone.model];
     cell.devicePrice.text = [NSString stringWithFormat:@"%g", phone.price];
     cell.deviceImage.image = defaultImage;
     cell.contentView.backgroundColor = [UIColor whiteColor];

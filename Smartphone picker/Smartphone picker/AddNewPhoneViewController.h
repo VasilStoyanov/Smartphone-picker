@@ -18,4 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTV;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAddNewPhone;
+
 @end

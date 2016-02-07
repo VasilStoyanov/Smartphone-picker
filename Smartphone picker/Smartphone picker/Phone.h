@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSString *OS;
 
+//@property (nonatomic, strong) NSString *description;
+
 -(instancetype) initWithModel: (NSString *) model
                   manufacturer: (NSString *) manufacturer
                          price: (double) price
