@@ -15,12 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="534" height="240"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qvs-qL-f5C">
-                        <rect key="frame" x="8" y="8" width="227" height="224"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="227" id="vsP-4S-Q24"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manufacturer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uJ-4e-yGu">
                         <rect key="frame" x="243" y="8" width="291" height="21"/>
                         <constraints>
@@ -45,6 +39,12 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qvs-qL-f5C">
+                        <rect key="frame" x="8" y="8" width="227" height="224"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="227" id="vsP-4S-Q24"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.94955810455820133" green="1" blue="0.93931776226909269" alpha="1" colorSpace="calibratedRGB"/>
                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>

@@ -10,13 +10,16 @@
 #import "Phone.h"
 #import "PhoneTableViewCell.h"
 #import "AddNewPhoneViewController.h"
+#import "PhonesBase.h"
+#import "PhoneDetailsViewController.h"
 
 @interface AllPhonesViewController ()
 
 @end
 
 @implementation AllPhonesViewController {
-    NSArray *namess;
+    PhonesBase *phones;
+    Phone *selectedPhone;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +28,11 @@
     self.title = @"All phones";
     [self applyNavStyles];
     
-    namess = [NSMutableArray arrayWithObjects:@"Pesho", @"Gosho", @"Penka Lalova", @"Pesho", @"Kolio", @"Pesho", @"Plaka", nil];
+    phones = [[PhonesBase alloc]init];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+        [self.allPhonesTV reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +40,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return namess.count;
+    return phones.phoneBase.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,26 +48,54 @@
 }
 
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    selectedPhone = phones.phoneBase[indexPath.row];
+    selectedCell.contentView.backgroundColor = [self getUIColorFromRGB:175 green:238 blue:238 alpha:1];
+    [self performSegueWithIdentifier:@"ViewPhoneDetailsSegue" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue
+                sender:(id)sender {
+    NSString *toViewPhoneDetailsSegue = @"ViewPhoneDetailsSegue";
+    if([segue.identifier isEqualToString:toViewPhoneDetailsSegue]) {
+        PhoneDetailsViewController *toVC = segue.destinationViewController;
+        NSString *deviceFullName = [NSString stringWithFormat:@"%@ %@",
+                                    selectedPhone.manufacturer,
+                                    selectedPhone.model];
+        
+        toVC.fullName = deviceFullName;
+        toVC.priceofDevice = [NSString stringWithFormat:@"%g $", selectedPhone.price];
+        toVC.imageSrc = selectedPhone.image;
+        toVC.devicePrice.text = [NSString stringWithFormat:@"%g", selectedPhone.price];
+        if([selectedPhone.OS isEqualToString:@"iOS"]) {
+            toVC.OS = @"iosLogo";
+        }
+        else if([selectedPhone.OS isEqualToString:@"Android"]) {
+            toVC.OS = @"androidLogo";
+        }
+        else {
+            toVC.OS = @"windowsLogo";
+        }
+        toVC.phone = selectedPhone;
+        
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"PhoneCell";
     PhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PhoneCell" owner:self options:nil] objectAtIndex:0];
     }
-    Phone *phone = [[Phone alloc]init];
-    phone.model = @"One M8";
-    phone.manufacturer = @"HTC";
-    phone.price = 456;
     
-    UIImage *defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
-    if(!defaultImage) {
-        defaultImage = [UIImage imageNamed:@"DefaultPhoneImage"];
-    }
+    UIImage *currentDeviceImage = [phones.phoneBase[indexPath.row] getImage];
     
-    cell.deviceManufacturer.text = [NSString stringWithFormat:@"%@", phone.manufacturer];
-    cell.deviceManufacturer.text = [NSString stringWithFormat:@"%@", phone.model];
-    cell.devicePrice.text = [NSString stringWithFormat:@"%g", phone.price];
-    cell.deviceImage.image = defaultImage;
+    cell.deviceManufacturer.text = [phones.phoneBase[indexPath.row] manufacturer];
+    cell.deviceModel.text = [phones.phoneBase[indexPath.row] model];
+    cell.devicePrice.text = [NSString stringWithFormat:@"%g $", [phones.phoneBase[indexPath.row]price]];
+    cell.deviceImage.image = currentDeviceImage;
     cell.contentView.backgroundColor = [UIColor whiteColor];
     [cell.contentView.layer setBorderColor:[self getUIColorFromRGB:237 green:241 blue:228 alpha:1].CGColor];
     [cell.contentView.layer setBorderWidth:2.0f];

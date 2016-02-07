@@ -10,6 +10,8 @@
 
 @interface AddNewPhoneViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *deviceNewOSSegment;
+
 @property (weak, nonatomic) IBOutlet UITextField *manufacturerTF;
 
 @property (weak, nonatomic) IBOutlet UITextField *deviceModelTF;

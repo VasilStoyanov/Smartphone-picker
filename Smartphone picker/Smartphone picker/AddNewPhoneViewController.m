@@ -9,6 +9,7 @@
 #import "AddNewPhoneViewController.h"
 #import "PhonesBase.h"
 #import "Phone.h"
+#import "UIView+Toast.h"
 
 @interface AddNewPhoneViewController ()
 
@@ -17,6 +18,7 @@
 @implementation AddNewPhoneViewController{
     PhonesBase *base;
     Phone *newPhone;
+    NSString *newDeviceOperatingSystem;
 }
 
 - (void)viewDidLoad {
@@ -34,6 +36,7 @@
     [self.descriptionTV.layer setBorderColor:[self getUIColorFromRGB:237 green:241 blue:228 alpha:1].CGColor];
     [self.descriptionTV.layer setBorderWidth:2.0f];
     base = [[PhonesBase alloc]init];
+    newDeviceOperatingSystem = @"iOS";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +45,45 @@
 }
 
 - (IBAction)addNewPhone:(id)sender {
-    newPhone = [[Phone alloc] initWithModel:@"Pesho" manufacturer:@"PESHO OOD" price:123 image:@"Default" andOS:@"Android"];
+    // VALIDATIONS!!!!
+    NSString *newDeviceModelName = self.deviceModelTF.text;
+    NSString *newDeviceManufacturerName = self.manufacturerTF.text;
+    double newDevicePrice = [self.priceTF.text doubleValue];
+    NSString *newDeviceOS = newDeviceOperatingSystem;
+    UIImage *newDeviceImage = [UIImage imageNamed:@"defaultPhotoForPhones"];
+    newPhone = [[Phone alloc] initWithModel:newDeviceModelName manufacturer:newDeviceManufacturerName price:newDevicePrice image:newDeviceImage andOS:newDeviceOS];
+    
     [base.phoneBase addObject:newPhone];
+    [self.view makeToast:@"Smartphone added! You owe only a smile! :)"
+                duration:3.0
+                position:CSToastPositionCenter
+                   title:@"Success!"
+                   image:[UIImage imageNamed:@"everythingAllright.png"]
+                   style:nil
+              completion:^(BOOL didTap) {
+                  if (didTap) {
+                      NSLog(@"completion from tap");
+                  } else {
+                      NSLog(@"completion without tap");
+                  }
+              }];
+}
+- (IBAction)osValueChanged:(id)sender {
+    NSLog(@"I AM HEREEEE");
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+            newDeviceOperatingSystem = @"iOS";
+            break;
+        case 1:
+            newDeviceOperatingSystem = @"Android";
+            break;
+        case 2:
+            newDeviceOperatingSystem = @"Windows";
+            break;
+        default:
+            newDeviceOperatingSystem = @"iOS";
+            break;
+    }
 }
 
 -(UIColor *)getUIColorFromRGB: (float)red

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Phone.h"
 
 @interface PhoneDetailsViewController : UIViewController
 
@@ -22,12 +23,14 @@
 
 @property (strong, nonatomic) NSString *fullName;
 
-@property (strong, nonatomic) NSString *imageSrc;
+@property (strong, nonatomic) UIImage *imageSrc;
 
 @property (strong, nonatomic) NSString *priceofDevice;
 
 //@property (strong, nonatomic) NSString *description;
 
 @property (strong, nonatomic) NSString *OS;
+
+@property (strong, nonatomic) Phone *phone;
 
 @end

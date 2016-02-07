@@ -24,21 +24,6 @@
     
     [self.homeSearchBar setDelegate:self];
     
-    [self.view makeToast:@"Smartphone added! You owe only a smile! :)"
-                duration:3.0
-                position:CSToastPositionCenter
-                   title:@"Success!"
-                   image:[UIImage imageNamed:@"everythingAllright.png"]
-                   style:nil
-              completion:^(BOOL didTap) {
-                  if (didTap) {
-                      NSLog(@"completion from tap");
-                  } else {
-                      NSLog(@"completion without tap");
-                  }
-              }];
-
-    
     [self applyNavStyles];
     self.title = @"Quick find";
     
@@ -54,21 +39,17 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"PhoneCell";
     PhoneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     if(!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PhoneCell" owner:self options:nil] objectAtIndex:0];
     }
     
-    NSString *currentDeviceImage = (NSString *)[result[indexPath.row] image];
-    UIImage *defaultImage = [UIImage imageNamed:currentDeviceImage];
-    
-    if(!defaultImage) {
-        defaultImage = [UIImage imageNamed:currentDeviceImage];
-    }
+    UIImage *currentPhoneImage = [result[indexPath.row] getImage];
     
     cell.deviceManufacturer.text = [result[indexPath.row] manufacturer];
     cell.deviceModel.text = [result[indexPath.row] model];
     cell.devicePrice.text = [NSString stringWithFormat:@"%g $", [result[indexPath.row]price]];
-    cell.deviceImage.image = defaultImage;
+    cell.deviceImage.image = currentPhoneImage;
     cell.contentView.backgroundColor = [UIColor whiteColor];
     [cell.contentView.layer setBorderColor:[self getUIColorFromRGB:237 green:241 blue:228 alpha:1].CGColor];
     [cell.contentView.layer setBorderWidth:2.0f];
@@ -110,6 +91,7 @@
         else {
             toVC.OS = @"windowsLogo";
         }
+        toVC.phone = selectedPhone;
         
         
     }

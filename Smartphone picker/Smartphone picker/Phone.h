@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface Phone : NSObject
+@interface Phone : UIViewController
 
 @property (nonatomic, strong) NSString *model;
 
@@ -16,7 +17,7 @@
 
 @property double price;
 
-@property (nonatomic, strong) NSString *image;
+@property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, strong) NSString *OS;
 
@@ -25,7 +26,9 @@
 -(instancetype) initWithModel: (NSString *) model
                   manufacturer: (NSString *) manufacturer
                          price: (double) price
-                         image: (NSString *) image
+                         image: (UIImage *) image
                          andOS: (NSString *) OS;
+
+-(UIImage *) getImage;
 
 @end

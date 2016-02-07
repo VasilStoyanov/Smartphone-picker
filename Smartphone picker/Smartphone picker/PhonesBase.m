@@ -33,17 +33,17 @@
         theArray = [[NSMutableArray alloc] init];
     }
     
-    p1 = [[Phone alloc]initWithModel:@"One M8" manufacturer:@"HTC" price:1200 image:@"DefaultPhoneImage" andOS:@"Android"];
+    p1 = [[Phone alloc]initWithModel:@"One M8" manufacturer:@"HTC" price:1200 image:[UIImage imageNamed:@"htcM8"] andOS:@"Android"];
     
-    p2 = [[Phone alloc]initWithModel:@"Galaxy S6" manufacturer:@"Samsung" price:1220 image:@"galaxyS6" andOS:@"Android"];
+    p2 = [[Phone alloc]initWithModel:@"Galaxy S6" manufacturer:@"Samsung" price:1220 image:[UIImage imageNamed:@"galaxyS6"] andOS:@"Android"];
     
-    p3 = [[Phone alloc]initWithModel:@"Galaxy S6 Edge" manufacturer:@"Samsung" price:1400 image:@"galaxyS6Edge" andOS:@"Android"];
+    p3 = [[Phone alloc]initWithModel:@"Galaxy S6 Edge" manufacturer:@"Samsung" price:1400 image:[UIImage imageNamed:@"galaxyS6Edge"] andOS:@"Android"];
     
-    p4 = [[Phone alloc]initWithModel:@"Nexus 5" manufacturer:@"Google" price:1000 image:@"DefaultPhoneImage" andOS:@"Android"];
+    p4 = [[Phone alloc]initWithModel:@"Nexus 5" manufacturer:@"Google" price:1000 image:[UIImage imageNamed:@"nexus5"] andOS:@"Android"];
     
-    p5 = [[Phone alloc]initWithModel:@"G4" manufacturer:@"LG" price:1500 image:@"DefaultPhoneImage" andOS:@"Android"];
+    p5 = [[Phone alloc]initWithModel:@"G4" manufacturer:@"LG" price:1500 image:[UIImage imageNamed:@"lgg4"] andOS:@"Android"];
     
-    p6 = [[Phone alloc]initWithModel:@"iPhone 5s" manufacturer:@"Apple" price:2200 image:@"DefaultPhoneImage" andOS:@"iOS"];
+    p6 = [[Phone alloc]initWithModel:@"iPhone 5s" manufacturer:@"Apple" price:2200 image:[UIImage imageNamed:@"iphone5s"] andOS:@"iOS"];
     
     if(theArray.count <= 0) {
         theArray = [NSMutableArray arrayWithObjects:p1,p2,p3,p4,p5,p6, nil];

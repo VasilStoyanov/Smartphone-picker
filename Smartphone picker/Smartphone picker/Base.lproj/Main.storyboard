@@ -21,6 +21,19 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5QR-ee-3aL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Mzh-jQ-6ll">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mzh-jQ-6ll" id="tdf-sv-qvd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="G6L-7V-WwV" kind="show" identifier="ViewPhoneDetailsSegue" id="4KY-1v-Hyh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,14 +65,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oWn-Fk-h50">
-                                <rect key="frame" x="20" y="85" width="560" height="29"/>
-                                <segments>
-                                    <segment title="iOS"/>
-                                    <segment title="Android"/>
-                                    <segment title="Windows"/>
-                                </segments>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating system:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zH-1N-rF2">
                                 <rect key="frame" x="20" y="44" width="560" height="40"/>
                                 <constraints>
@@ -131,6 +136,17 @@
                                     <action selector="addNewPhone:" destination="LMi-3e-VGv" eventType="touchUpInside" id="W9R-S2-D9J"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oWn-Fk-h50">
+                                <rect key="frame" x="20" y="85" width="560" height="29"/>
+                                <segments>
+                                    <segment title="iOS"/>
+                                    <segment title="Android"/>
+                                    <segment title="Windows"/>
+                                </segments>
+                                <connections>
+                                    <action selector="osValueChanged:" destination="LMi-3e-VGv" eventType="valueChanged" id="iIS-dg-s5c"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -195,20 +211,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultPhoneImage" translatesAutoresizingMaskIntoConstraints="NO" id="28B-Cy-vsG">
-                                <rect key="frame" x="20" y="118" width="570" height="201"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhotoForPhones" translatesAutoresizingMaskIntoConstraints="NO" id="28B-Cy-vsG">
+                                <rect key="frame" x="0.0" y="102" width="600" height="217"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="androidLogo" translatesAutoresizingMaskIntoConstraints="NO" id="m8K-qz-GmT">
                                 <rect key="frame" x="289" y="327" width="33" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="33" id="kwl-fH-4aN"/>
-                                    <constraint firstAttribute="height" constant="29" id="wqy-3X-Wbb"/>
+                                    <constraint firstAttribute="height" constant="29" id="D7a-iS-scB"/>
+                                    <constraint firstAttribute="width" constant="33" id="YyX-cP-Icx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fg-yq-DDJ">
                                 <rect key="frame" x="25" y="358" width="560" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="f6e-Jy-dl9"/>
+                                    <constraint firstAttribute="height" constant="21" id="ToH-S2-DLr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.49501101209661424" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -218,38 +234,39 @@
                                 <rect key="frame" x="0.0" y="387" width="600" height="164"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="164" id="GBN-VK-lZB"/>
+                                    <constraint firstAttribute="height" constant="164" id="s85-eq-Scy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device full name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LJ-lD-g5o">
-                                <rect key="frame" x="15" y="64" width="580" height="46"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="45"/>
+                                <color key="backgroundColor" red="0.6782947023" green="0.72672296250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="V55-jo-z0U"/>
+                                    <constraint firstAttribute="height" constant="45" id="fgg-NX-oFm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.51720565589893308" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="drM-6s-aqo" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leading" id="7ke-rr-SmV"/>
-                            <constraint firstItem="m8K-qz-GmT" firstAttribute="centerX" secondItem="8fg-yq-DDJ" secondAttribute="centerX" id="F43-Wx-j7S"/>
-                            <constraint firstItem="drM-6s-aqo" firstAttribute="bottom" secondItem="E3m-Gj-ynI" secondAttribute="top" id="FHq-JO-Ifu"/>
-                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="top" secondItem="Y5G-My-oft" secondAttribute="bottom" id="LMd-Qh-eJo"/>
-                            <constraint firstItem="8fg-yq-DDJ" firstAttribute="top" secondItem="m8K-qz-GmT" secondAttribute="bottom" constant="2" id="Mb3-Ym-GIJ"/>
-                            <constraint firstItem="8fg-yq-DDJ" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leadingMargin" constant="5" id="V1k-5V-OMm"/>
-                            <constraint firstItem="28B-Cy-vsG" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leadingMargin" id="YcZ-cl-2qc"/>
-                            <constraint firstItem="drM-6s-aqo" firstAttribute="top" secondItem="8fg-yq-DDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dsl-zd-2h6"/>
-                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="centerX" secondItem="28B-Cy-vsG" secondAttribute="centerX" id="eSq-PJ-c0x"/>
-                            <constraint firstAttribute="trailing" secondItem="drM-6s-aqo" secondAttribute="trailing" id="evP-tD-qRh"/>
-                            <constraint firstItem="28B-Cy-vsG" firstAttribute="centerX" secondItem="m8K-qz-GmT" secondAttribute="centerX" id="jde-SR-qjw"/>
-                            <constraint firstItem="m8K-qz-GmT" firstAttribute="top" secondItem="28B-Cy-vsG" secondAttribute="bottom" constant="8" symbolic="YES" id="rgz-zZ-E7K"/>
-                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leadingMargin" constant="-5" id="tO6-ZC-N8m"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8fg-yq-DDJ" secondAttribute="trailing" constant="-5" id="u3o-vQ-rdt"/>
-                            <constraint firstItem="28B-Cy-vsG" firstAttribute="top" secondItem="9LJ-lD-g5o" secondAttribute="bottom" constant="8" symbolic="YES" id="vJ9-Sl-wjF"/>
+                            <constraint firstItem="drM-6s-aqo" firstAttribute="bottom" secondItem="E3m-Gj-ynI" secondAttribute="top" id="6Sp-YB-Wei"/>
+                            <constraint firstItem="28B-Cy-vsG" firstAttribute="leading" secondItem="drM-6s-aqo" secondAttribute="leading" id="7mu-76-eh9"/>
+                            <constraint firstItem="8fg-yq-DDJ" firstAttribute="top" secondItem="m8K-qz-GmT" secondAttribute="bottom" constant="2" id="DHJ-UT-2ny"/>
+                            <constraint firstItem="drM-6s-aqo" firstAttribute="top" secondItem="8fg-yq-DDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="DJv-26-OC7"/>
+                            <constraint firstItem="m8K-qz-GmT" firstAttribute="top" secondItem="28B-Cy-vsG" secondAttribute="bottom" constant="8" symbolic="YES" id="LI0-YL-bhK"/>
+                            <constraint firstAttribute="trailing" secondItem="drM-6s-aqo" secondAttribute="trailing" id="NGY-yo-FA9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8fg-yq-DDJ" secondAttribute="trailing" constant="-5" id="QIe-HX-ahp"/>
+                            <constraint firstItem="m8K-qz-GmT" firstAttribute="centerX" secondItem="8fg-yq-DDJ" secondAttribute="centerX" id="S8i-Q0-w6u"/>
+                            <constraint firstItem="drM-6s-aqo" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leading" id="Sgz-Hm-Zc6"/>
+                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="trailing" secondItem="28B-Cy-vsG" secondAttribute="trailing" id="Wae-87-v46"/>
+                            <constraint firstItem="28B-Cy-vsG" firstAttribute="top" secondItem="9LJ-lD-g5o" secondAttribute="bottom" constant="-7" id="Yuq-vv-U2r"/>
+                            <constraint firstItem="8fg-yq-DDJ" firstAttribute="leading" secondItem="Lxo-7X-pyl" secondAttribute="leadingMargin" constant="5" id="jl7-mg-91Q"/>
+                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="top" secondItem="Y5G-My-oft" secondAttribute="bottom" id="lyL-A9-qGM"/>
+                            <constraint firstItem="9LJ-lD-g5o" firstAttribute="leading" secondItem="28B-Cy-vsG" secondAttribute="leading" id="vzz-rD-HZ7"/>
+                            <constraint firstItem="drM-6s-aqo" firstAttribute="trailing" secondItem="28B-Cy-vsG" secondAttribute="trailing" id="w2c-Px-vzQ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -323,11 +340,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" placeholder="Type here to quickly find a smartphone." translatesAutoresizingMaskIntoConstraints="NO" id="3aJ-ne-1xL">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <color key="barTintColor" red="0.79782317642919653" green="0.85127989298365991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iVF-ko-U50">
                                 <rect key="frame" x="0.0" y="137" width="600" height="463"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -345,6 +357,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Enter here a phone model to quickly find it" translatesAutoresizingMaskIntoConstraints="NO" id="3aJ-ne-1xL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <color key="barTintColor" red="0.79782317642919653" green="0.85127989298365991" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -584,9 +601,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DefaultPhoneImage" width="2244" height="1772"/>
         <image name="androidLogo" width="25" height="25"/>
+        <image name="defaultPhotoForPhones" width="156" height="235"/>
         <image name="searchIcon" width="29" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4KY-1v-Hyh"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.063895881877646943" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

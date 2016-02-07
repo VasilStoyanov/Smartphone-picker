@@ -10,7 +10,7 @@
 
 @implementation Phone
 
--(instancetype) initWithModel:(NSString *)model manufacturer:(NSString *)manufacturer price:(double)price image:(NSString *)image andOS:(NSString *)OS {
+-(instancetype) initWithModel:(NSString *)model manufacturer:(NSString *)manufacturer price:(double)price image:(UIImage *)image andOS:(NSString *)OS {
     Phone *result = [[Phone alloc]init];
     result.model = model;
     result.manufacturer = manufacturer;
@@ -19,6 +19,10 @@
     result.OS = OS;
     
     return result;
+}
+
+-(UIImage *) getImage {
+    return self.image;
 }
 
 @end
