@@ -1,38 +1,32 @@
-//
-//  AllPhonesViewController.m
-//  Smartphone picker
-//
-//  Created by Vasil Stoyanov on 2/6/16.
 //  Copyright © 2016 Vasil Stoyanov. All rights reserved.
-//
-
 #import "AllPhonesViewController.h"
 #import "Phone.h"
 #import "PhoneTableViewCell.h"
 #import "AddNewPhoneViewController.h"
-#import "PhonesBase.h"
 #import "PhoneDetailsViewController.h"
+#import "FMDB.h"
 
 @interface AllPhonesViewController ()
 
 @end
 
 @implementation AllPhonesViewController {
-    PhonesBase *phones;
     Phone *selectedPhone;
+    NSMutableArray *phonesDb;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getDataFromDb];
+    
     [self.allPhonesTV setDataSource:self];
     [self.allPhonesTV setDelegate:self];
     self.title = @"All phones";
     [self applyNavStyles];
-    
-    phones = [[PhonesBase alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-        [self.allPhonesTV reloadData];
+    [self getDataFromDb];
+    [self.allPhonesTV reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +34,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return phones.phoneBase.count;
+    return phonesDb.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,13 +45,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    selectedPhone = phones.phoneBase[indexPath.row];
+    selectedPhone = phonesDb[indexPath.row];
     selectedCell.contentView.backgroundColor = [self getUIColorFromRGB:175 green:238 blue:238 alpha:1];
     [self performSegueWithIdentifier:@"ViewPhoneDetailsSegue" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue
                 sender:(id)sender {
+    
     NSString *toViewPhoneDetailsSegue = @"ViewPhoneDetailsSegue";
     if([segue.identifier isEqualToString:toViewPhoneDetailsSegue]) {
         PhoneDetailsViewController *toVC = segue.destinationViewController;
@@ -90,15 +85,16 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PhoneCell" owner:self options:nil] objectAtIndex:0];
     }
     
-    UIImage *currentDeviceImage = [phones.phoneBase[indexPath.row] getImage];
+    UIImage *currentDeviceImage = [phonesDb[indexPath.row] getImage];
     
-    cell.deviceManufacturer.text = [phones.phoneBase[indexPath.row] manufacturer];
-    cell.deviceModel.text = [phones.phoneBase[indexPath.row] model];
-    cell.devicePrice.text = [NSString stringWithFormat:@"%g $", [phones.phoneBase[indexPath.row]price]];
+    cell.deviceManufacturer.text = [phonesDb[indexPath.row] manufacturer];
+    cell.deviceModel.text = [phonesDb[indexPath.row] model];
+    cell.devicePrice.text = [NSString stringWithFormat:@"%g $", [phonesDb[indexPath.row]price]];
     cell.deviceImage.image = currentDeviceImage;
     cell.contentView.backgroundColor = [UIColor whiteColor];
     [cell.contentView.layer setBorderColor:[self getUIColorFromRGB:237 green:241 blue:228 alpha:1].CGColor];
     [cell.contentView.layer setBorderWidth:2.0f];
+    
     return cell;
 }
 
@@ -130,6 +126,38 @@
     NSString *boardId = @"addPhoneScene";
     AddNewPhoneViewController *addPhoneVC = [self.storyboard instantiateViewControllerWithIdentifier:boardId];
     [self.navigationController pushViewController:addPhoneVC animated:YES];
+}
+
+-(void) getDataFromDb {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"SmartphonePicker.db"];
+    FMDatabase *db = [FMDatabase databaseWithPath:path];
+    [db open];
+    
+    phonesDb = [[NSMutableArray alloc]init];
+    FMResultSet *selectResult = [db executeQuery: @"SELECT * FROM Smartphone"];
+    
+    while([selectResult next]) {
+        NSString *model = [selectResult stringForColumnIndex:1];
+        NSString *manufacturer = [selectResult stringForColumnIndex:2];
+        double price = [selectResult doubleForColumnIndex:3];
+        UIImage *image = [UIImage imageNamed:[selectResult stringForColumnIndex:4]];
+        //description
+        NSString *operationSystem = [selectResult stringForColumnIndex:6];
+        if(!image) {
+            NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:[selectResult stringForColumnIndex:4]];
+            image =[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
+        }
+        Phone *phoneToPush = [[Phone alloc]initWithModel:model manufacturer:manufacturer price:price image:image andOS:operationSystem];
+        [phonesDb addObject:phoneToPush];
+    }
+    
+    [db close];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 @end

@@ -4,21 +4,24 @@
 #import "Phone.h"
 #import "UIView+Toast.h"
 #import "PhoneDetailsViewController.h"
-#import "PhonesBase.h"
+#import "FMDB.h"
+
 
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController {
-    PhonesBase *phones;
+    NSMutableArray *phonesDb;
     NSMutableArray *result;
     Phone *selectedPhone;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeDatabase];
+    [self getDataFromDb];
+    
     [self.homeTableView setDataSource:self];
     [self.homeTableView setDelegate:self];
     
@@ -27,13 +30,17 @@
     [self applyNavStyles];
     self.title = @"Quick find";
     
-    phones = [[PhonesBase alloc]init];
     result = [[NSMutableArray alloc] init];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self getDataFromDb];
+    [self.homeTableView reloadData];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,7 +74,6 @@
     selectedCell.contentView.backgroundColor = [self getUIColorFromRGB:175 green:238 blue:238 alpha:1];
     [self performSegueWithIdentifier:@"ViewPhoneDetailsSegue" sender:self];
 }
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue
                 sender:(id)sender {
@@ -106,7 +112,7 @@
     result = [[NSMutableArray alloc]init];
     
     NSString *searchTextToLower = [searchText lowercaseString];
-    for (Phone *phone in phones.phoneBase) {
+    for (Phone *phone in phonesDb) {
         NSString *phoneModelToLower = [phone.model lowercaseString];
         if([phoneModelToLower containsString:searchTextToLower]) {
             if(![result containsObject:phone]) {
@@ -146,5 +152,72 @@
     return mainColor;
     
 }
+
+-(void) initializeDatabase {
+    NSLog(@"Check and create database");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"SmartphonePicker.db"];
+    NSLog(@"%@", path);
+    FMDatabase *db = [FMDatabase databaseWithPath:path];
+    if (![db open]) {
+        return;
+    }
+    else {
+        [db open];
+        NSLog(@"Database exist.");
+        FMResultSet *selectResult = [db executeQuery: @"SELECT * FROM Smartphone"];
+        if (selectResult == nil) {
+            [db executeUpdate:@"CREATE TABLE Smartphone (id INTEGER PRIMARY KEY AUTOINCREMENT, phoneModel TEXT, phoneManufacturer TEXT, phonePrice DOUBLE, phoneImage TEXT, description TEXT, operationSystem TEXT)"];
+    
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"One M8", @"HTC", @(800), @"htcM8", @"No desc", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"Galaxy S6", @"Samsung", @(1200), @"galaxyS6", @"No desc", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"Galaxy S6 Edge", @"Samsung", @(1400), @"galaxyS6Edge", @"No desc", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"Nexus", @"Google", @(600), @"nexus5", @"No desc", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"G4", @"LG", @(1100), @"lgg4", @"No desc", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"iPhone 5s", @"Apple", @(1400), @"iphone5s", @"No desc", @"iOS"];
+            
+            NSLog(@"Table created!");
+        }
+    }
+}
+
+-(void) getDataFromDb {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"SmartphonePicker.db"];
+    FMDatabase *db = [FMDatabase databaseWithPath:path];
+    [db open];
+    
+    phonesDb = [[NSMutableArray alloc]init];
+    FMResultSet *selectResult = [db executeQuery: @"SELECT * FROM Smartphone"];
+    
+    while([selectResult next]) {
+        NSString *model = [selectResult stringForColumnIndex:1];
+        NSString *manufacturer = [selectResult stringForColumnIndex:2];
+        double price = [selectResult doubleForColumnIndex:3];
+        UIImage *image = [UIImage imageNamed:[selectResult stringForColumnIndex:4]];
+        //description
+        NSString *operationSystem = [selectResult stringForColumnIndex:6];
+        if(!image) {
+            NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:[selectResult stringForColumnIndex:4]];
+            image =[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
+        }
+        Phone *phoneToPush = [[Phone alloc]initWithModel:model manufacturer:manufacturer price:price image:image andOS:operationSystem];
+        [phonesDb addObject:phoneToPush];
+    }
+    
+    [db close];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
 
 @end

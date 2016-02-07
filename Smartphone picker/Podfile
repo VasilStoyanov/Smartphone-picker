@@ -5,5 +5,7 @@
 
 target 'Smartphone picker' do
 
+pod ‘FMDB’ 
+
 end
 

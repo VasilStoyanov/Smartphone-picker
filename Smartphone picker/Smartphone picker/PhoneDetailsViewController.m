@@ -1,12 +1,16 @@
 //  Copyright © 2016 Vasil Stoyanov. All rights reserved.
 #import "PhoneDetailsViewController.h"
+#import "FMDB.h"
+
 @import Photos;
 
 @interface PhoneDetailsViewController ()
 
 @end
 
-@implementation PhoneDetailsViewController
+@implementation PhoneDetailsViewController {
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,16 +43,44 @@
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+    
+    NSString *newImageName = [NSString stringWithFormat:@"image%d.png",
+                              [self getRandomNumberBetween:1 to:99999]];
+                              
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent: newImageName];
+    
     NSData *imageData = UIImagePNGRepresentation(image);
     [imageData writeToFile:savedImagePath atomically:YES];
     
     self.deviceImageSrc.image = image;
     self.phone.image = image;
+    [self updatePhoneInDatabase:self.phone.model
+                       newImage:newImageName];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)updatePhoneInDatabase: (NSString *) phoneModel
+                    newImage: (NSString *) newImage {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:@"SmartphonePicker.db"];
+    FMDatabase *db = [FMDatabase databaseWithPath:path];
+    [db open];
+    FMResultSet *selectResult = [db executeQuery: @"SELECT * FROM Smartphone"];
+    if(selectResult != nil) {
+        [db executeUpdate: @"UPDATE Smartphone SET phoneImage = ? WHERE phoneModel = ?", newImage, phoneModel];
+    }
+    [db close];
+}
+
+-(int)getRandomNumberBetween:(int)from
+                          to:(int)to {
+    
+    return (int)from + arc4random() % (to-from+1);
 }
 
 @end

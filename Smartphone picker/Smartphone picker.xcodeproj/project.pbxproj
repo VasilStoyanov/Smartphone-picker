@@ -22,7 +22,7 @@
 		03D2096E1C5EB05A00FBB254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096D1C5EB05A00FBB254 /* Assets.xcassets */; };
 		03D209711C5EB05A00FBB254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096F1C5EB05A00FBB254 /* LaunchScreen.storyboard */; };
 		03F87E5B1C66942E009DB6D5 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F87E5A1C66942E009DB6D5 /* UIView+Toast.m */; };
-		03F87E621C66B5CB009DB6D5 /* PhonesBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F87E611C66B5CB009DB6D5 /* PhonesBase.m */; };
+		1C78EBA7B73F296422284DFD /* libPods-Smartphone picker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1EB577CEC0C0991724F9F /* libPods-Smartphone picker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +53,9 @@
 		03D209721C5EB05A00FBB254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03F87E591C66942E009DB6D5 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "../../UIView+Toast.h"; sourceTree = "<group>"; };
 		03F87E5A1C66942E009DB6D5 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "../../UIView+Toast.m"; sourceTree = "<group>"; };
-		03F87E601C66B5CB009DB6D5 /* PhonesBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhonesBase.h; sourceTree = "<group>"; };
-		03F87E611C66B5CB009DB6D5 /* PhonesBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhonesBase.m; sourceTree = "<group>"; };
+		1DF35C54583006E38DBFA5A9 /* Pods-Smartphone picker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smartphone picker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker.release.xcconfig"; sourceTree = "<group>"; };
+		69F1EB577CEC0C0991724F9F /* libPods-Smartphone picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Smartphone picker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95932620BB3AB67DC528897B /* Pods-Smartphone picker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smartphone picker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C78EBA7B73F296422284DFD /* libPods-Smartphone picker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,8 @@
 			children = (
 				03D209601C5EB05A00FBB254 /* Smartphone picker */,
 				03D2095F1C5EB05A00FBB254 /* Products */,
+				E7ACB519C79942D882B3A95A /* Pods */,
+				A62B39E4661D2F182F07738F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,7 +110,6 @@
 		03D209601C5EB05A00FBB254 /* Smartphone picker */ = {
 			isa = PBXGroup;
 			children = (
-				03F87E5C1C66B554009DB6D5 /* Data */,
 				03F87E581C66940A009DB6D5 /* NotificationLib */,
 				03A2FF511C656FB100B14039 /* Models */,
 				03868B921C60210F0008E4DE /* CustomViews */,
@@ -139,15 +142,6 @@
 			name = NotificationLib;
 			sourceTree = "<group>";
 		};
-		03F87E5C1C66B554009DB6D5 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				03F87E601C66B5CB009DB6D5 /* PhonesBase.h */,
-				03F87E611C66B5CB009DB6D5 /* PhonesBase.m */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		03F979821C5F88D400AF925A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +161,23 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
+		A62B39E4661D2F182F07738F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69F1EB577CEC0C0991724F9F /* libPods-Smartphone picker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7ACB519C79942D882B3A95A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95932620BB3AB67DC528897B /* Pods-Smartphone picker.debug.xcconfig */,
+				1DF35C54583006E38DBFA5A9 /* Pods-Smartphone picker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,9 +185,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03D209751C5EB05A00FBB254 /* Build configuration list for PBXNativeTarget "Smartphone picker" */;
 			buildPhases = (
+				0F0C74A51BE75F6187BDE1FC /* Check Pods Manifest.lock */,
 				03D2095A1C5EB05A00FBB254 /* Sources */,
 				03D2095B1C5EB05A00FBB254 /* Frameworks */,
 				03D2095C1C5EB05A00FBB254 /* Resources */,
+				B8C3616A0831BF4699FA586C /* Embed Pods Frameworks */,
+				B7B5B51F6FF863A5D377E8D0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +247,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F0C74A51BE75F6187BDE1FC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7B5B51F6FF863A5D377E8D0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8C3616A0831BF4699FA586C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03D2095A1C5EB05A00FBB254 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -249,7 +311,6 @@
 				0393DB541C663FEE0028A8C8 /* AndroidManufacturerersViewController.m in Sources */,
 				0393DB5F1C6672440028A8C8 /* PhoneDetailsViewController.m in Sources */,
 				03A2FF541C65715B00B14039 /* AddNewPhoneViewController.m in Sources */,
-				03F87E621C66B5CB009DB6D5 /* PhonesBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +420,7 @@
 		};
 		03D209761C5EB05A00FBB254 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95932620BB3AB67DC528897B /* Pods-Smartphone picker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -375,6 +437,7 @@
 		};
 		03D209771C5EB05A00FBB254 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DF35C54583006E38DBFA5A9 /* Pods-Smartphone picker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
