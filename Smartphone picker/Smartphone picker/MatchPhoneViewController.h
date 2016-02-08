@@ -19,8 +19,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
-@property (weak, nonatomic) IBOutlet UITextField *minPriceTF;
-
 @property (weak, nonatomic) IBOutlet UITextField *maxPriceTf;
+
+@property (strong, nonatomic) IBOutlet UITextField *minimumPriceTF;
+
+@property (strong, nonatomic) IBOutlet UITextField *maximumPriceTF;
 
 @end

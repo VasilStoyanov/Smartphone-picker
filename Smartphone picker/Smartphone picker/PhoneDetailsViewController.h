@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) NSString *priceofDevice;
 
-//@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *showDescription;
 
 @property (strong, nonatomic) NSString *OS;
 

@@ -22,6 +22,8 @@
 		03D2096E1C5EB05A00FBB254 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096D1C5EB05A00FBB254 /* Assets.xcassets */; };
 		03D209711C5EB05A00FBB254 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2096F1C5EB05A00FBB254 /* LaunchScreen.storyboard */; };
 		03F950C91C67FF78002CE7F7 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F950C81C67FF78002CE7F7 /* UIView+Toast.m */; };
+		03F950D11C6816D7002CE7F7 /* AddPhoneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F950D01C6816D7002CE7F7 /* AddPhoneValidator.swift */; };
+		03F950D41C682D2D002CE7F7 /* MatchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F950D31C682D2D002CE7F7 /* MatchResultViewController.m */; };
 		1C78EBA7B73F296422284DFD /* libPods-Smartphone picker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F1EB577CEC0C0991724F9F /* libPods-Smartphone picker.a */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +45,7 @@
 		03A2FF4F1C6558F400B14039 /* AllPhonesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllPhonesViewController.m; sourceTree = "<group>"; };
 		03A2FF521C65715B00B14039 /* AddNewPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewPhoneViewController.h; sourceTree = "<group>"; };
 		03A2FF531C65715B00B14039 /* AddNewPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewPhoneViewController.m; sourceTree = "<group>"; };
-		03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smartphone picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D2095E1C5EB05A00FBB254 /* SmartphonePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartphonePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D209621C5EB05A00FBB254 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03D209641C5EB05A00FBB254 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		03D209651C5EB05A00FBB254 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +55,10 @@
 		03D209721C5EB05A00FBB254 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03F950C71C67FF78002CE7F7 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		03F950C81C67FF78002CE7F7 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		03F950CF1C6816D6002CE7F7 /* Smartphone picker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smartphone picker-Bridging-Header.h"; sourceTree = "<group>"; };
+		03F950D01C6816D7002CE7F7 /* AddPhoneValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhoneValidator.swift; sourceTree = "<group>"; };
+		03F950D21C682D2D002CE7F7 /* MatchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchResultViewController.h; sourceTree = "<group>"; };
+		03F950D31C682D2D002CE7F7 /* MatchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchResultViewController.m; sourceTree = "<group>"; };
 		1DF35C54583006E38DBFA5A9 /* Pods-Smartphone picker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smartphone picker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker.release.xcconfig"; sourceTree = "<group>"; };
 		69F1EB577CEC0C0991724F9F /* libPods-Smartphone picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Smartphone picker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95932620BB3AB67DC528897B /* Pods-Smartphone picker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smartphone picker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smartphone picker/Pods-Smartphone picker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +108,7 @@
 		03D2095F1C5EB05A00FBB254 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */,
+				03D2095E1C5EB05A00FBB254 /* SmartphonePicker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +116,7 @@
 		03D209601C5EB05A00FBB254 /* Smartphone picker */ = {
 			isa = PBXGroup;
 			children = (
+				03F950CA1C68128B002CE7F7 /* Validations */,
 				03F87E581C66940A009DB6D5 /* NotificationLib */,
 				03A2FF511C656FB100B14039 /* Models */,
 				03868B921C60210F0008E4DE /* CustomViews */,
@@ -142,6 +149,15 @@
 			name = NotificationLib;
 			sourceTree = "<group>";
 		};
+		03F950CA1C68128B002CE7F7 /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				03F950D01C6816D7002CE7F7 /* AddPhoneValidator.swift */,
+				03F950CF1C6816D6002CE7F7 /* Smartphone picker-Bridging-Header.h */,
+			);
+			name = Validations;
+			sourceTree = "<group>";
+		};
 		03F979821C5F88D400AF925A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +173,8 @@
 				0393DB531C663FEE0028A8C8 /* AndroidManufacturerersViewController.m */,
 				0393DB5D1C6672440028A8C8 /* PhoneDetailsViewController.h */,
 				0393DB5E1C6672440028A8C8 /* PhoneDetailsViewController.m */,
+				03F950D21C682D2D002CE7F7 /* MatchResultViewController.h */,
+				03F950D31C682D2D002CE7F7 /* MatchResultViewController.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -198,7 +216,7 @@
 			);
 			name = "Smartphone picker";
 			productName = "Smartphone picker";
-			productReference = 03D2095E1C5EB05A00FBB254 /* Smartphone picker.app */;
+			productReference = 03D2095E1C5EB05A00FBB254 /* SmartphonePicker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -303,11 +321,13 @@
 				03868BA61C629D500008E4DE /* Phone.m in Sources */,
 				03A2FF501C6558F400B14039 /* AllPhonesViewController.m in Sources */,
 				03D209661C5EB05A00FBB254 /* AppDelegate.m in Sources */,
+				03F950D11C6816D7002CE7F7 /* AddPhoneValidator.swift in Sources */,
 				0393DB511C662CF80028A8C8 /* MatchPhoneViewController.m in Sources */,
 				03D209631C5EB05A00FBB254 /* main.m in Sources */,
 				03F950C91C67FF78002CE7F7 /* UIView+Toast.m in Sources */,
 				03868BA31C6298E40008E4DE /* PhoneTableViewCell.m in Sources */,
 				03868B9C1C615C470008E4DE /* HomeViewController.m in Sources */,
+				03F950D41C682D2D002CE7F7 /* MatchResultViewController.m in Sources */,
 				0393DB541C663FEE0028A8C8 /* AndroidManufacturerersViewController.m in Sources */,
 				0393DB5F1C6672440028A8C8 /* PhoneDetailsViewController.m in Sources */,
 				03A2FF541C65715B00B14039 /* AddNewPhoneViewController.m in Sources */,
@@ -429,7 +449,8 @@
 				INFOPLIST_FILE = "Smartphone picker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Vasil-Stoyanov.Smartphone-picker";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = SmartphonePicker;
+				PRODUCT_NAME = SmartphonePicker;
 				SWIFT_OBJC_BRIDGING_HEADER = "Smartphone picker/Smartphone picker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -446,7 +467,8 @@
 				INFOPLIST_FILE = "Smartphone picker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Vasil-Stoyanov.Smartphone-picker";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = SmartphonePicker;
+				PRODUCT_NAME = SmartphonePicker;
 				SWIFT_OBJC_BRIDGING_HEADER = "Smartphone picker/Smartphone picker-Bridging-Header.h";
 			};
 			name = Release;

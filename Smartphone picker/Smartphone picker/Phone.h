@@ -21,12 +21,13 @@
 
 @property (nonatomic, strong) NSString *OS;
 
-//@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *deviceDescription;
 
 -(instancetype) initWithModel: (NSString *) model
                   manufacturer: (NSString *) manufacturer
                          price: (double) price
                          image: (UIImage *) image
+                  description: (NSString *) deviceDescription
                          andOS: (NSString *) OS;
 
 -(UIImage *) getImage;

@@ -17,6 +17,8 @@
     [self.deviceFullName setText:self.fullName];
     [self.devicePrice setText:self.priceofDevice];
     self.deviceImageSrc.image = self.imageSrc;
+    self.deviceDescription.text = self.showDescription;
+    self.deviceDescription.font = [UIFont systemFontOfSize:16.0f];
     self.deviceOperatingSystemImage.image = [UIImage imageNamed:self.OS];
     
     self.deviceImageSrc.userInteractionEnabled = YES;

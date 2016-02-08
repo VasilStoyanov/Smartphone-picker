@@ -63,6 +63,7 @@
         toVC.fullName = deviceFullName;
         toVC.priceofDevice = [NSString stringWithFormat:@"%g $", selectedPhone.price];
         toVC.imageSrc = selectedPhone.image;
+        toVC.showDescription = selectedPhone.deviceDescription;
         toVC.devicePrice.text = [NSString stringWithFormat:@"%g", selectedPhone.price];
         if([selectedPhone.OS isEqualToString:@"iOS"]) {
             toVC.OS = @"iosLogo";
@@ -113,7 +114,7 @@
 }
 
 -(void)applyNavStyles {
-    UIColor *navStyle = [self getUIColorFromRGB:0 green:127 blue:255 alpha:1];
+    UIColor *navStyle = [self getUIColorFromRGB:102 green:204 blue:255 alpha:1];
     [self.navigationController.navigationBar setBarTintColor: navStyle];
     [self.navigationController.navigationBar setTranslucent:YES];
 
@@ -143,13 +144,13 @@
         NSString *manufacturer = [selectResult stringForColumnIndex:2];
         double price = [selectResult doubleForColumnIndex:3];
         UIImage *image = [UIImage imageNamed:[selectResult stringForColumnIndex:4]];
-        //description
+        NSString *description = [selectResult stringForColumnIndex:5];
         NSString *operationSystem = [selectResult stringForColumnIndex:6];
         if(!image) {
             NSString *workSpacePath=[[self applicationDocumentsDirectory] stringByAppendingPathComponent:[selectResult stringForColumnIndex:4]];
             image =[UIImage imageWithData:[NSData dataWithContentsOfFile:workSpacePath]];
         }
-        Phone *phoneToPush = [[Phone alloc]initWithModel:model manufacturer:manufacturer price:price image:image andOS:operationSystem];
+        Phone *phoneToPush = [[Phone alloc]initWithModel:model manufacturer:manufacturer price:price image:image description:description andOS:operationSystem];
         [phonesDb addObject:phoneToPush];
     }
     
