@@ -182,6 +182,12 @@
             
             [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"iPhone 5s", @"Apple", @(1400), @"iphone5s", @"Great build quality, camera is snappy and takes good images!", @"iOS"];
             
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"Lumia 920", @"Microsoft", @(900), @"lumia920", @"Excellent phone with gorgeous camera. Perfect fit for windows phone lovers!", @"Windows"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"Nexus 4", @"Google", @(900), @"nexus4", @"Bang for the buck smartphone! With vanilla android, very smooth and speedy! Decent camera!", @"Android"];
+            
+            [db executeUpdate: @"INSERT INTO Smartphone (phoneModel, phoneManufacturer, phonePrice, phoneImage, description, operationSystem) VALUES (?, ?, ?, ?, ?, ? )", @"iPhone 6s Plus", @"Apple", @(1800), @"iphone6sPlusRose", @"Apple's new flagship device, looks very premium, has 3D touch!", @"iOS"];
+            
             NSLog(@"Table created!");
         }
     }
