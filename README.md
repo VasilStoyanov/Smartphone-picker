@@ -9,5 +9,5 @@ The application provides the following functionality:
 * Easy to use navigation between pages.
 * Lists different items with details.
 * Quick search for finding a phone.
-* Poll-like information gatherer.
-* Back-end services
+* "Matching" a smartphone, from criteria.
+* Storage of new phones (SQLite)
